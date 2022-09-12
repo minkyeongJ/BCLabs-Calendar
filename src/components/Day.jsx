@@ -7,15 +7,12 @@ export default function Day({ dayNumber, day }) {
   const [isToday, setIsToday] = useState(false);
   const today = Today();
 
-  console.log(today + " vs " + dayNumber);
-  console.log(typeof today + " vs " + typeof Number(dayNumber));
   useEffect(() => {
     if (today === Number(dayNumber)) {
       setIsToday(true);
     }
   }, []);
 
-  console.log(isToday);
   return (
     <DaySection>
       <DayTitle state={isToday}>
