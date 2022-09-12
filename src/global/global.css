@@ -1,0 +1,24 @@
+:root {
+  --base-blue: #2168f1;
+  --base-lightblue: #f3f3ff;
+  --base-orange: #ff8a73;
+  --base-lightorange: #fff7f3;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.25;
+}
+
+.ir {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
