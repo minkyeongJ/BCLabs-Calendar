@@ -5,9 +5,7 @@ export default function Schedule() {
     <ScheduleSection>
       <h1 className="ir">스케줄 내용</h1>
       <ul>
-        <Li>* 스케줄입니다^0^dsfsdg</Li>
-        <Li>* 스케줄입니다^0^</Li>
-        <Li>* 스케줄입니다^0^</Li>
+        <Li>* 스케줄 제목 입니다^0^dsfsdg</Li>
       </ul>
     </ScheduleSection>
   );
@@ -15,7 +13,7 @@ export default function Schedule() {
 
 const ScheduleSection = styled.section`
   width: 100%;
-  height: 60px;
+  height: 40px;
   background-color: white;
   border-radius: 10px;
   box-sizing: border-box;

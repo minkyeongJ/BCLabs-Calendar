@@ -1,10 +1,8 @@
 import Day from "./Day";
 import styled from "styled-components";
-import { WeekArr } from "../utils/getDate";
 
-export default function Week() {
+export default function Week({ arrWeek }) {
   let calenderDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const arrWeek = WeekArr();
   return (
     <WeekList>
       {calenderDays.map((day, i) => {
@@ -12,7 +10,7 @@ export default function Week() {
         console.log(dayNumber);
         return (
           <Li key={dayNumber}>
-            <Day dayNumber={dayNumber} day={day} />
+            <Day arrWeek={arrWeek[i]} dayNumber={dayNumber} day={day} />
           </Li>
         );
       })}

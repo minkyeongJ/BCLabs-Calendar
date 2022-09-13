@@ -17,14 +17,14 @@ let monthLastDate = new Date(calendarYear, calendarMonth, 0);
 let calendarMonthLastDate = monthLastDate.getDate();
 
 // 달력 이전 월의 마지막 일
-var prevMonthLastDate = new Date(calendarYear, calendarMonth - 1, 0);
+let prevMonthLastDate = new Date(calendarYear, calendarMonth - 1, 0);
 
 // 달력 월의 시작 요일, 달력을 만들 때 1이 출력되는 위치
 let monthStartDay = new Date(calendarYear, date.getMonth(), 1);
 let calendarMonthStartDay = monthStartDay.getDay();
 
 // 달력 다음 월의 시작 일
-var nextMonthStartDate = new Date(calendarYear, calendarMonth, 1);
+let nextMonthStartDate = new Date(calendarYear, calendarMonth, 1);
 
 // 주 카운트
 let calendarWeekCount = Math.ceil(
@@ -57,13 +57,12 @@ weekDay = calendarToday;
 for (let i = calendarMonthTodayDay - 1; i >= 0; i--) {
   weekDay--;
   // 날짜가 현재 월의 1일이면 작으면 이전 월의 마지막 일로 변경
-  // 날짜가 현재 월의 1일이면 작으면 이전 월의 마지막 일로 변경
   if (weekDay == 0) {
     weekYear = prevMonthLastDate.getFullYear();
     weekMonth = prevMonthLastDate.getMonth() + 1;
     weekDay = prevMonthLastDate;
   }
-  arrWeek[i] = weekYear + "-" + weekMonth + "-" + weekDay;;
+  arrWeek[i] = weekYear + "-" + weekMonth + "-" + weekDay;
 }
 
 export function Year() {
@@ -78,6 +77,40 @@ export function WeekArr() {
   return arrWeek;
 }
 
-export function Today() {
-  return calendarToday;
+export function PastWeekArr(presentWeek) {
+  let presentWeekSunday = presentWeek[0].split("-")[2];
+  let presentWeekYear = presentWeek[0].split("-")[0];
+  let presentWeekMonth = presentWeek[0].split("-")[1];
+
+  let prevWeekMonthLastDate = new Date(
+    presentWeekYear,
+    presentWeekMonth - 1,
+    0
+  );
+  let calendarPrevWeekMonthLastDate = prevWeekMonthLastDate.getDate();
+
+  let prevWeekArr = [0, 0, 0, 0, 0, 0, 0];
+  let prevWeekYear = presentWeek[0].split("-")[0];
+  let prevWeekMonth = presentWeek[0].split("-")[1];
+  let prevWeekDay = presentWeekSunday;
+  // 현재 요일부터 꺼꾸로 주간 배열에 날짜를 추가
+  for (let i = 6; i >= 0; i--) {
+    prevWeekDay--;
+    // 날짜가 현재 월의 1일 보다 작으면 이전 월의 마지막 일로 변경
+    if (prevWeekDay <= 0) {
+      prevWeekYear = prevWeekMonthLastDate.getFullYear();
+      prevWeekMonth = prevWeekMonthLastDate.getMonth() + 1;
+      prevWeekDay = calendarPrevWeekMonthLastDate;
+    }
+    prevWeekArr[i] = prevWeekYear + "-" + prevWeekMonth + "-" + prevWeekDay;
+  }
+  return prevWeekArr;
+}
+
+export function ForwardWeekArr() {
+  return;
+}
+
+export function TodayDate() {
+  return `${calendarYear}-${calendarMonth}-${calendarToday}`;
 }

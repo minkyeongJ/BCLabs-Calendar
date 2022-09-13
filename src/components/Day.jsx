@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Schedule from "./Schedule";
-import { Today } from "../utils/getDate";
+import * as Date from "../utils/getDate";
 import { useEffect, useState } from "react";
 
-export default function Day({ dayNumber, day }) {
+export default function Day({ arrWeek, dayNumber, day }) {
   const [isToday, setIsToday] = useState(false);
-  const today = Today();
+  const today = Date.TodayDate();
 
   useEffect(() => {
-    if (today === Number(dayNumber)) {
+    if (today === arrWeek) {
       setIsToday(true);
     }
   }, []);
