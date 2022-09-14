@@ -1,9 +1,15 @@
 import styled from "styled-components";
 import Schedule from "./Schedule";
 import * as Date from "../utils/getDate";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function Day({ arrWeek, dayNumber, day }) {
+export default function Day({
+  arrWeek,
+  dayNumber,
+  day,
+  openCreateScheduleModal,
+  eventTargetData,
+}) {
   const [isToday, setIsToday] = useState(false);
   const today = Date.TodayDate();
 
@@ -13,14 +19,19 @@ export default function Day({ arrWeek, dayNumber, day }) {
     }
   }, []);
 
+  const targetDate = useRef();
+  
   return (
-    <DaySection>
+    <DaySection onClick={eventTargetData}>
       <DayTitle state={isToday}>
         <h1 className="ir">날짜 및 요일</h1>
         <SpanStyle>{dayNumber}</SpanStyle>
         <SpanStyle>{day}</SpanStyle>
       </DayTitle>
-      <DaySchedule state={isToday}>
+      <DaySchedule state={isToday} onClick={openCreateScheduleModal}>
+        <p id="clicked-date" ref={targetDate} hidden>
+          {arrWeek}
+        </p>
         <ul>
           <Li>
             <Schedule />
@@ -39,6 +50,7 @@ const DaySection = styled.section`
   max-width: 160px;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 `;
 
 const DayTitle = styled.section`

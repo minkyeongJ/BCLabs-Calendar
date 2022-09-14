@@ -3,15 +3,24 @@
   --base-lightblue: #f3f3ff;
   --base-orange: #ff8a73;
   --base-lightorange: #fff7f3;
+  --oc-gray-5: #adb5bd;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-size: 1.6rem;
-    line-height: 1.25;
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  border-bottom: 1px solid var(--oc-gray-5);
 }
 
 .ir {
