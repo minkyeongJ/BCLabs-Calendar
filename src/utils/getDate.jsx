@@ -57,7 +57,7 @@ weekDay = calendarToday;
 for (let i = calendarMonthTodayDay - 1; i >= 0; i--) {
   weekDay--;
   // 날짜가 현재 월의 1일이면 작으면 이전 월의 마지막 일로 변경
-  if (weekDay == 0) {
+  if (weekDay === 0) {
     weekYear = prevMonthLastDate.getFullYear();
     weekMonth = prevMonthLastDate.getMonth() + 1;
     weekDay = prevMonthLastDate;
@@ -77,7 +77,7 @@ export function WeekArr() {
   return arrWeek;
 }
 
-export function PastWeekArr(presentWeek) {
+export function PrevWeekArr(presentWeek) {
   let presentWeekSunday = presentWeek[0].split("-")[2];
   let presentWeekYear = presentWeek[0].split("-")[0];
   let presentWeekMonth = presentWeek[0].split("-")[1];
@@ -93,7 +93,7 @@ export function PastWeekArr(presentWeek) {
   let prevWeekYear = presentWeek[0].split("-")[0];
   let prevWeekMonth = presentWeek[0].split("-")[1];
   let prevWeekDay = presentWeekSunday;
-  // 현재 요일부터 꺼꾸로 주간 배열에 날짜를 추가
+  // 현재 요일이 해당하는 주 일요일부터 꺼꾸로 주간 배열에 날짜를 추가
   for (let i = 6; i >= 0; i--) {
     prevWeekDay--;
     // 날짜가 현재 월의 1일 보다 작으면 이전 월의 마지막 일로 변경
@@ -107,8 +107,31 @@ export function PastWeekArr(presentWeek) {
   return prevWeekArr;
 }
 
-export function ForwardWeekArr() {
-  return;
+export function NextWeekArr(presentWeek) {
+  let presentWeekSaturday = presentWeek[6].split("-")[2];
+  let presentWeekYear = presentWeek[0].split("-")[0];
+  let presentWeekMonth = presentWeek[0].split("-")[1];
+
+  let presentWeekMonthLastDate = new Date(presentWeekYear, presentWeekMonth, 0);
+
+  let nextMonthDate = new Date(presentWeekYear, presentWeekMonth, 1);
+
+  let nextWeekArr = [0, 0, 0, 0, 0, 0, 0];
+  let nextWeekYear = presentWeek[6].split("-")[0];
+  let nextWeekMonth = presentWeek[6].split("-")[1];
+  let nextWeekDay = presentWeekSaturday;
+  // 다음 주 일요일부터 차례로 주간 배열에 날짜를 추가
+  for (let i = 0; i < 7; i++) {
+    nextWeekDay++;
+    // 날짜가 현재 월의 마지막일 보다 크면 다음 월의 1일로 변경
+    if (nextWeekDay > presentWeekMonthLastDate.getDate()) {
+      nextWeekYear = nextMonthDate.getFullYear();
+      nextWeekMonth = nextMonthDate.getMonth() + 1;
+      nextWeekDay = 1;
+    }
+    nextWeekArr[i] = nextWeekYear + "-" + nextWeekMonth + "-" + nextWeekDay;
+  }
+  return nextWeekArr;
 }
 
 export function TodayDate() {

@@ -11,12 +11,11 @@ export default function Home() {
   const year = arrWeek[0].split("-")[0];
   const month = arrWeek[0].split("-")[1];
   function leftClick() {
-    setArrWeek(Date.PastWeekArr(arrWeek));
-    console.log(Date.PastWeekArr(arrWeek));
+    setArrWeek(Date.PrevWeekArr(arrWeek));
   }
 
   function rightClick() {
-    Date.ForwardWeekArr();
+    setArrWeek(Date.NextWeekArr(arrWeek));
   }
 
   return (
