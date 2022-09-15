@@ -30,16 +30,18 @@ export const CloseButton = styled.button`
 export const Date = styled.p`
   font-size: 2rem;
   margin-bottom: 10px;
+  font-weight: 600;
 `;
 
 export const Title = styled.span`
   font-size: 1.5rem;
   margin-right: 10px;
+  font-weight: 600;
 `;
 
 export const Textarea = styled.textarea`
   width: 100%;
-  height: 150px;
+  height: 180px;
   padding: 10px;
   box-sizing: border-box;
   border: solid 2px var(--oc-gray-5);
@@ -53,8 +55,12 @@ export const Li = styled.li`
   margin-top: 10px;
 `;
 
-export const Input = styled.input`
+export const InputTxt = styled.input`
   width: 80%;
+`;
+
+export const InputRadio = styled.input`
+  margin-left: 10px;
 `;
 
 export const SaveButton = styled.button`
@@ -65,4 +71,12 @@ export const SaveButton = styled.button`
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
-`
+`;
+
+export const Fieldset = styled.fieldset`
+  display: flex;
+`;
+
+export const TypeUl = styled.ul`
+  display: flex;
+`;
