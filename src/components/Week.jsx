@@ -38,7 +38,12 @@ export default function Week({ arrWeek }) {
         })}
       </WeekList>
       <Modal>
-        {modalOpen ? <CreateScheduleModal selectedDate={targetData} /> : null}
+        {modalOpen ? (
+          <CreateScheduleModal
+            selectedDate={targetData}
+            setModalOpen={setModalOpen}
+          />
+        ) : null}
       </Modal>
     </>
   );
