@@ -1,9 +1,32 @@
 # 주제: 구글 캘린더 API를 활용한 주간 캘린더
-
 배포링크: https://bcl-abs-calendar.vercel.app
 
-## 사용기술
+## 프로젝트 실행
+```
+$ npm i
+$ npm start
+```
 
+## 실행화면
+- [링크](https://bcl-abs-calendar.vercel.app) 접속 시 구글 로그인 화면이 나타납니다.
+![image](https://user-images.githubusercontent.com/67677374/190901123-4fcd2485-1692-498b-bdf7-7ee7a94e0386.png)
+
+- 구글 로그인 성공 시 주간 캘린더가 나타납니다.
+![image](https://user-images.githubusercontent.com/67677374/190901157-eeaf4cb4-a8fa-477d-93a7-f71e60b5af51.png)
+
+- 일정을 입력하고 싶은 날짜를 클릭하면 입력 화면이 나타납니다.
+![image](https://user-images.githubusercontent.com/67677374/190901191-0bc1a572-5242-4ccd-963e-b6b5ce4804fd.png)
+
+## 구현 내용
+- src> utils> getDate.jsx에 Date()를 이용하여 오늘 날짜가 존재하는 주간일정을 보여줄 수 있도록 함수를 구현
+    - 이전 주, 다음 주 이동 기능 구현
+- 구글 클라이언트 설정 및 react-oauth/google를 사용하여 구글로그인 구현
+    - Goole OAuth 2.0 접근 토큰 획득
+
+## 진행 중인 사항
+- https://developers.google.com/calendar/api/quickstart/js 을 사용하여 Goole Calendar API 사용 설정
+
+## 사용기술
 - React.js
 - styled-component
 
@@ -31,7 +54,7 @@ constants : 전역으로 사용되는 상수 집합
 global: 전역으로 사용되는 스타일 집합
 utils: 모듈화한 함수 집합
 
-
+BCLabs-Calendar
 ├─public
 │      favicon.ico
 │      index.html
